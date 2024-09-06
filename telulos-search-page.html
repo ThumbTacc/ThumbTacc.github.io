@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telulos Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            font-size: 72px;
+            margin-top: 150px;
+            margin-bottom: 30px;
+        }
+        .search-container {
+            width: 100%;
+            max-width: 584px;
+        }
+        .search-box {
+            width: 100%;
+            height: 44px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 0 20px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-box:hover, .search-box:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            border-color: rgba(223,225,229,0);
+        }
+        .search-button {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            color: #3c4043;
+            font-size: 14px;
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            background-color: #f8f9fa;
+            border: 1px solid #dadce0;
+            color: #202124;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #5f6368;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">Telulos</div>
+    <div class="search-container">
+        <form id="search-form" onsubmit="return performSearch()">
+            <input type="text" class="search-box" id="search-input" autofocus>
+            <center>
+                <button type="submit" class="search-button">Telulos Search</button>
+            </center>
+        </form>
+    </div>
+    <div class="footer">Powered by Telulos Intent. For employees only.</div>
+
+    <script>
+        function performSearch() {
+            var query = document.getElementById('search-input').value;
+            var searchUrl;
+            
+            if (query.toLowerCase().includes('google')) {
+                searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            } else {
+                searchUrl = 'https://www.perplexity.ai/search?q=' + encodeURIComponent(query);
+            }
+            
+            window.location.href = searchUrl;
+            return false;
+        }
+    </script>
+</body>
+</html>
